@@ -1,7 +1,8 @@
 import { Router } from "express";
-import { body, param } from "express-validator";
+import { body } from "express-validator";
 import { CategoryController } from "../controllers/CategoryController";
 import { handleInputErrors } from "../middleware/validation";
+import { validateCategoryId } from "../middleware/category";
 
 const router = Router()
 
@@ -15,14 +16,11 @@ router.post("/categories/create",
 );
 
 router.get("/categories/:id",
-    param("id").isInt().withMessage("ID not valid")
-        .custom(value => value > 0).withMessage("ID not valid"),
-    handleInputErrors,
+    validateCategoryId,
     CategoryController.getById
 );
 router.put("/categories/:id",
-    param("id").isInt().withMessage("ID not valid")
-        .custom(value => value > 0).withMessage("ID not valid"),
+    validateCategoryId,
     body("name")
         .notEmpty().withMessage("The category name is required"),
     handleInputErrors,
@@ -30,9 +28,7 @@ router.put("/categories/:id",
 );
 
 router.delete("/categories/:id",
-    param("id").isInt().withMessage("ID not valid")
-        .custom(value => value > 0).withMessage("ID not valid"),
-    handleInputErrors,
+    validateCategoryId,
     CategoryController.deleteById
 );
 
