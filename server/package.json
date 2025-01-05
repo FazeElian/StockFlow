@@ -1,0 +1,24 @@
+{
+  "name": "stockflow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FazeElian/StockFlow.git"
+  },
+  "author": "Elián Ibarra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FazeElian/StockFlow/issues"
+  },
+  "homepage": "https://github.com/FazeElian/StockFlow#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "express": "^4.21.2",
+    "morgan": "^1.10.0"
+  }
+}
