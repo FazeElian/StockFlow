@@ -30,14 +30,18 @@ export class CategoryController {
 
     static create = async (req: Request, res: Response) => {
         try {
-            const category = new Category(req.body);
-            if (category) {
+            const { name, description } = req.body;
+
+            const existingCategory = await Category.findOne({ where: { name } });
+            if (existingCategory) {
                 const error = new Error("The category already exists");
                 res.status(404).json({ error: error.message });
                 return;
             }
 
+            const category = new Category({ name, description });
             await category.save();
+
             res.status(201).send("Category created sucessfully");
         } catch (error) {
             res.status(500).json({ error: "Error creating the category" })
@@ -77,7 +81,7 @@ export class CategoryController {
             
             // Delete
             await category.destroy()
-            
+
             res.json("Category updated sucessfully");
         } catch (error) {
             res.status(500).json({ error: "Error getting the category by id" })
