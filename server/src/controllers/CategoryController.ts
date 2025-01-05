@@ -65,6 +65,22 @@ export class CategoryController {
     }
 
     static deleteById = async (req: Request, res: Response) => {
-        res.send("Delete category by id")
+        try {
+            const { id } = req.params;
+            const category = await Category.findByPk(id)
+
+            if (!category) {
+                const error = new Error("Category not found");
+                res.status(404).json({ error: error.message });
+                return;
+            }
+            
+            // Delete
+            await category.destroy()
+            
+            res.json("Category updated sucessfully");
+        } catch (error) {
+            res.status(500).json({ error: "Error getting the category by id" })
+        }
     }
 }

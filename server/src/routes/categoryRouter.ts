@@ -27,7 +27,13 @@ router.put("/categories/:id",
         .notEmpty().withMessage("The category name is required"),
     handleInputErrors,
     CategoryController.updateById
-)
-router.delete("/categories/:id", CategoryController.deleteById)
+);
+
+router.delete("/categories/:id",
+    param("id").isInt().withMessage("ID not valid")
+        .custom(value => value > 0).withMessage("ID not valid"),
+    handleInputErrors,
+    CategoryController.deleteById
+);
 
 export default router;
