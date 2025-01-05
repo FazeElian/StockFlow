@@ -3,7 +3,11 @@ import {
     Column,
     Model,
     DataType,
+    HasMany
 } from "sequelize-typescript";
+
+// Product model
+import Product from "./Product";
 
 @Table({
     tableName: "categories"
@@ -19,6 +23,12 @@ class Category extends Model {
         type: DataType.STRING
     })
     declare description: string
+
+    @HasMany(() => Product, {
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE"
+    })
+    declare products: Product[]
 }
 
 export default Category;

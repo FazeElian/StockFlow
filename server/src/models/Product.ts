@@ -3,13 +3,21 @@ import {
     Column,
     Model,
     DataType,
+    BelongsTo,
+    ForeignKey,
 } from "sequelize-typescript";
+
+// Category model
+import Category from "./Category";
 
 @Table({
     tableName: "products"
 })
 
 class Product extends Model {
+    @ForeignKey(() => Category)
+    declare categoryId: number
+
     @Column({
         type: DataType.STRING(150)
     })
@@ -44,6 +52,9 @@ class Product extends Model {
         type: DataType.STRING
     })
     description: string
+
+    @BelongsTo(() => Category)
+    declare category: Category
 }
 
 export default Product;
