@@ -3,7 +3,12 @@ import Category from "../models/Category"
 
 export class CategoryController {
     static getAll = async (req: Request, res: Response) => {
-        res.send("All categories")
+        try {
+            const categories = await Category.findAll({});
+            res.json(categories)
+        } catch (error) {
+            res.status(500).json({ error: "Error getting the categories" })
+        }
     }
 
     static getById = async (req: Request, res: Response) => {
