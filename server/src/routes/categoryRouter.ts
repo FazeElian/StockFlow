@@ -2,7 +2,7 @@ import { Router } from "express";
 import { body } from "express-validator";
 import { CategoryController } from "../controllers/CategoryController";
 import { handleInputErrors } from "../middleware/validation";
-import { validateCategoryId } from "../middleware/category";
+import { validateCategoryId, validateIfCategoryExists } from "../middleware/category";
 
 const router = Router()
 
@@ -17,10 +17,13 @@ router.post("/categories/create",
 
 router.get("/categories/:id",
     validateCategoryId,
+    validateIfCategoryExists,
     CategoryController.getById
 );
+
 router.put("/categories/:id",
     validateCategoryId,
+    validateIfCategoryExists,
     body("name")
         .notEmpty().withMessage("The category name is required"),
     handleInputErrors,
@@ -29,6 +32,7 @@ router.put("/categories/:id",
 
 router.delete("/categories/:id",
     validateCategoryId,
+    validateIfCategoryExists,
     CategoryController.deleteById
 );
 
