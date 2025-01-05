@@ -11,7 +11,7 @@ declare global {
 }
 
 export const validateCategoryId = async (req: Request, res: Response, next: NextFunction) => {
-    await param("id")
+    await param("categoryId")
         .isInt().withMessage("ID not valid")
         .custom(value => value > 0).withMessage("ID not valid")
         .run(req);
@@ -27,8 +27,8 @@ export const validateCategoryId = async (req: Request, res: Response, next: Next
 
 export const validateIfCategoryExists = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const { id } = req.params;
-        const category = await Category.findByPk(id)
+        const { categoryId } = req.params;
+        const category = await Category.findByPk(categoryId)
 
         if (!category) {
             const error = new Error("Category not found");

@@ -5,6 +5,8 @@ import { handleInputErrors } from "../middleware/validation";
 import { validateCategoryId, validateIfCategoryExists } from "../middleware/category";
 
 const router = Router()
+router.param("categoryId", validateCategoryId);
+router.param("categoryId", validateIfCategoryExists);
 
 router.get("/categories/", CategoryController.getAll)
 
@@ -15,24 +17,18 @@ router.post("/categories/create",
     CategoryController.create
 );
 
-router.get("/categories/:id",
-    validateCategoryId,
-    validateIfCategoryExists,
+router.get("/categories/:categoryId",
     CategoryController.getById
 );
 
-router.put("/categories/:id",
-    validateCategoryId,
-    validateIfCategoryExists,
+router.put("/categories/:categoryId",
     body("name")
         .notEmpty().withMessage("The category name is required"),
     handleInputErrors,
     CategoryController.updateById
 );
 
-router.delete("/categories/:id",
-    validateCategoryId,
-    validateIfCategoryExists,
+router.delete("/categories/:categoryId",
     CategoryController.deleteById
 );
 
