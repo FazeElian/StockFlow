@@ -1,4 +1,5 @@
 import { Request, Response } from "express"
+import Category from "../models/Category"
 
 export class CategoryController {
     static getAll = async (req: Request, res: Response) => {
@@ -9,8 +10,14 @@ export class CategoryController {
         res.send("Category by Id")
     }
 
-    static new = async (req: Request, res: Response) => {
-        res.send("New category")
+    static create = async (req: Request, res: Response) => {
+        try {
+            const category = new Category(req.body);
+            await category.save();
+            res.status(201).send("Category created sucessfully");
+        } catch (error) {
+            res.status(500).json({ error: "Error creating the category" })
+        }
     }
 
     static updateById = async (req: Request, res: Response) => {

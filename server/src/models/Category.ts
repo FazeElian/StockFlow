@@ -13,12 +13,12 @@ class Category extends Model {
     @Column({
         type: DataType.STRING(150)
     })
-    name: string
+    declare name: string
 
     @Column({
         type: DataType.STRING
     })
-    description: string
+    declare description: string
 }
 
 export default Category;
