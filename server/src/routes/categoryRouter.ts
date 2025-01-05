@@ -1,33 +1,40 @@
 import { Router } from "express";
-import { body } from "express-validator";
 import { CategoryController } from "../controllers/CategoryController";
 import { handleInputErrors } from "../middleware/validation";
-import { validateCategoryId, validateIfCategoryExists } from "../middleware/category";
+import {
+    validateCategoryId,
+    validateCategoryInput,
+    validateIfCategoryExists
+} from "../middleware/category";
 
 const router = Router()
+
 router.param("categoryId", validateCategoryId);
 router.param("categoryId", validateIfCategoryExists);
 
+// Get all categories
 router.get("/categories/", CategoryController.getAll)
 
+// New category
 router.post("/categories/create",
-    body("name")
-        .notEmpty().withMessage("The category name is required"),
+    validateCategoryInput,
     handleInputErrors,
     CategoryController.create
 );
 
+// Get category by id
 router.get("/categories/:categoryId",
     CategoryController.getById
 );
 
+// Update category by id
 router.put("/categories/:categoryId",
-    body("name")
-        .notEmpty().withMessage("The category name is required"),
+    validateCategoryInput,
     handleInputErrors,
     CategoryController.updateById
 );
 
+// Delete category by id
 router.delete("/categories/:categoryId",
     CategoryController.deleteById
 );

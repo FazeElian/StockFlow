@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { param, validationResult } from 'express-validator';
+import { body, param, validationResult } from 'express-validator';
 import Category from '../models/Category';
 
 declare global {
@@ -41,4 +41,12 @@ export const validateIfCategoryExists = async (req: Request, res: Response, next
     } catch (error) {
         res.status(500).json({ error: "An error has ocurred" })
     }
+}
+
+export const validateCategoryInput = async (req: Request, res: Response, next: NextFunction) => {
+    await body("name")
+        .notEmpty().withMessage("The category name is required")
+        .run(req)
+    
+    next()
 }
