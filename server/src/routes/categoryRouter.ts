@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { body } from "express-validator";
+import { body, param } from "express-validator";
 import { CategoryController } from "../controllers/CategoryController";
 import { handleInputErrors } from "../middleware/validation";
 
@@ -14,7 +14,12 @@ router.post("/categories/create",
     CategoryController.create
 );
 
-router.get("/categories/:id", CategoryController.getById)
+router.get("/categories/:id",
+    param("id").isInt().withMessage("ID not valid")
+        .custom(value => value > 0).withMessage("ID not valid"),
+    handleInputErrors,
+    CategoryController.getById
+);
 router.put("/categories/:id", CategoryController.updateById)
 router.delete("/categories/:id", CategoryController.deleteById)
 

@@ -12,12 +12,31 @@ export class CategoryController {
     }
 
     static getById = async (req: Request, res: Response) => {
-        res.send("Category by Id")
+        try {
+            const { id } = req.params;
+            const category = await Category.findByPk(id);
+
+            if (!category) {
+                const error = new Error("Category not found");
+                res.status(404).json({ error: error.message });
+                return;
+            }
+            
+            res.json(category);
+        } catch (error) {
+            res.status(500).json({ error: "Error getting the category by id" })
+        }
     }
 
     static create = async (req: Request, res: Response) => {
         try {
             const category = new Category(req.body);
+            if (category) {
+                const error = new Error("The category already exists");
+                res.status(404).json({ error: error.message });
+                return;
+            }
+
             await category.save();
             res.status(201).send("Category created sucessfully");
         } catch (error) {
