@@ -5,6 +5,8 @@ import {
     DataType,
     BelongsTo,
     ForeignKey,
+    AllowNull,
+    Unique
 } from "sequelize-typescript";
 
 // Models
@@ -16,19 +18,24 @@ import User from "./User";
 })
 
 class Product extends Model {
+    @AllowNull(false)
     @ForeignKey(() => Category)
     declare categoryId: number
 
+    @AllowNull(false)
     @Column({
         type: DataType.STRING(150)
     })
     name: string
 
+    @AllowNull(false)
+    @Unique(true)
     @Column({
         type: DataType.STRING(10)
     })
     code: string
 
+    @AllowNull(false)
     @Column({
         type: DataType.DECIMAL
     })
@@ -39,6 +46,7 @@ class Product extends Model {
     })
     image: string
 
+    @AllowNull(false)
     @Column({
         type: DataType.INTEGER
     })

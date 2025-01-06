@@ -5,7 +5,8 @@ import {
     DataType,
     BelongsTo,
     ForeignKey,
-    HasMany
+    HasMany,
+    AllowNull,
 } from "sequelize-typescript";
 
 // Models
@@ -17,6 +18,7 @@ import User from "./User";
 })
 
 class Category extends Model {
+    @AllowNull(false)
     @Column({
         type: DataType.STRING(150)
     })
