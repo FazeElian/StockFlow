@@ -19,7 +19,15 @@ router.post("/register",
     AuthController.register
 );
 
-router.post("/login")
+router.post("/login",
+    body("email")
+        .isEmail().withMessage("Please enter a valid email address.")
+        .notEmpty().withMessage("Email is required"),
+    body("password")
+        .notEmpty().withMessage("Password is required"),
+    handleInputErrors,
+    AuthController.login
+);
 
 router.post("/confirm-account",
     body("token")

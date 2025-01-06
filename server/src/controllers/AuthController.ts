@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import User from '../models/User';
-import { hashPassword } from '../utils/auth';
+import { checkPassword, hashPassword } from '../utils/auth';
 import { generateToken } from '../utils/token';
 import { AuthEmail } from '../emails/AuthEmail';
 
@@ -36,7 +36,32 @@ export class AuthController {
     }
 
     static login = async (req: Request, res: Response) => {
+        const { email, password } = req.body;
 
+        // Check if the user already exists
+        const user = await User.findOne({ where: { email } });
+
+        if(!user) {
+            const error = new Error("We couldn’t find an account with the provided details. Please check and try again.");
+            res.status(404).json({ error: error.message });
+            return;
+        }
+
+        // Check if the account has been confirmed
+        if (!user.confirmed) {
+            const error = new Error("Your account has not been verified yet. Please check your email to confirm your account.");
+            res.status(403).json({ error: error.message });
+            return;
+        }
+
+        const isPasswordCorrect = await checkPassword(password, user.password);
+        if(!isPasswordCorrect) {
+            const error = new Error("Please check your password and try again.");
+            res.status(401).json({ error: error.message });
+            return;
+        }
+
+        res.status(200).json("You have logged in successfully.");
     }
 
     static confirmAccount = async (req: Request, res: Response) => {
