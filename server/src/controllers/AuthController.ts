@@ -106,4 +106,39 @@ export class AuthController {
 
         res.status(200).json("Great! We’ve sent you a password reset email. Check your inbox and follow the steps to reset your password.")
     }
+
+    static validateToken = async (req: Request, res: Response) => {
+        const { token } = req.body;
+
+        // Check if the token exists
+        const existingToken = await User.findOne({ where: { token } });
+        if(!existingToken) {
+            const error = new Error("Token not valid");
+            res.status(404).json({ error: error.message });
+            return;
+        }
+
+        res.status(200).json("The code was successfully verified. You can now set your new password.");
+    }
+
+    static resetPasswordWithToken = async (req: Request, res: Response) => {
+        const { token } = req.params;
+        const { password } = req.body;
+
+        // Check if the token exists
+        const user = await User.findOne({ where: { token } });
+        if(!user) {
+            const error = new Error("Token not valid");
+            res.status(404).json({ error: error.message });
+            return;
+        }
+
+        // New password
+        user.password = await hashPassword(password);
+        user.token = null;
+
+        await user.save();
+
+        res.status(200).json("Your password has been successfully reset. You can now log in with your new password.");
+    }
 }
