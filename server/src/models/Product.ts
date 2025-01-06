@@ -7,8 +7,9 @@ import {
     ForeignKey,
 } from "sequelize-typescript";
 
-// Category model
+// Models
 import Category from "./Category";
+import User from "./User";
 
 @Table({
     tableName: "products"
@@ -55,6 +56,12 @@ class Product extends Model {
 
     @BelongsTo(() => Category)
     declare category: Category
+
+    @ForeignKey(() => User)
+    declare userId : number
+
+    @BelongsTo(() => User)
+    declare user: User
 }
 
 export default Product;

@@ -3,11 +3,14 @@ import {
     Column,
     Model,
     DataType,
+    BelongsTo,
+    ForeignKey,
     HasMany
 } from "sequelize-typescript";
 
-// Product model
+// Models
 import Product from "./Product";
+import User from "./User";
 
 @Table({
     tableName: "categories"
@@ -29,6 +32,12 @@ class Category extends Model {
         onDelete: "CASCADE"
     })
     declare products: Product[]
+
+    @ForeignKey(() => User)
+    declare userId : number
+
+    @BelongsTo(() => User)
+    declare user : User
 }
 
 export default Category;

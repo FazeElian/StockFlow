@@ -4,9 +4,11 @@ import {
     Model,
     DataType,
     Default,
+    HasMany,
     Unique,
     AllowNull
 } from "sequelize-typescript";
+import Category from "./Category";
 
 @Table({
     tableName: "users"
@@ -61,6 +63,12 @@ class User extends Model {
         type: DataType.BOOLEAN
     })
     declare confirmed: boolean
+    
+    @HasMany(() => Category, {
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE"
+    })
+    declare categories: Category[]
 }
 
 export default User;
