@@ -2,6 +2,7 @@ import express from 'express'
 import colors from "colors";
 import morgan from 'morgan'
 import { db } from './config/db'
+import { limiter } from './config/limiter';
 
 // Routers
 import categoryRouter from "./routes/categoryRouter";
@@ -22,6 +23,7 @@ const app = express()
 
 app.use(morgan('dev'))
 app.use(express.json())
+app.use(limiter)
 
 // API
 app.use("/api/", categoryRouter);
