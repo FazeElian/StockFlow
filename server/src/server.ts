@@ -5,6 +5,7 @@ import { db } from './config/db'
 
 // Routers
 import categoryRouter from "./routes/categoryRouter";
+import authRouter from "./routes/authRouter";
 
 async function connectDB () {
     try {
@@ -24,5 +25,6 @@ app.use(express.json())
 
 // API
 app.use("/api/", categoryRouter);
+app.use("/api/auth/", authRouter);
 
 export default app

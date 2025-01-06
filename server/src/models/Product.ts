@@ -18,7 +18,6 @@ import User from "./User";
 })
 
 class Product extends Model {
-    @AllowNull(false)
     @ForeignKey(() => Category)
     declare categoryId: number
 

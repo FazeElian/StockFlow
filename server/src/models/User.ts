@@ -15,7 +15,6 @@ import Category from "./Category";
 })
 
 class User extends Model {
-    @AllowNull(false)
     @Unique(true)
     @Column({
         type: DataType.STRING(50)
