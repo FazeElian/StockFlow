@@ -3,6 +3,7 @@ import User from '../models/User';
 import { checkPassword, hashPassword } from '../utils/auth';
 import { generateToken } from '../utils/token';
 import { AuthEmail } from '../emails/AuthEmail';
+import { generateJWT } from '../utils/jwt';
 
 export class AuthController {
     static register = async (req: Request, res: Response) => {
@@ -60,6 +61,8 @@ export class AuthController {
             res.status(401).json({ error: error.message });
             return;
         }
+
+        const token = generateJWT(user.id)
 
         res.status(200).json("You have logged in successfully.");
     }
