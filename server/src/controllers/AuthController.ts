@@ -83,4 +83,27 @@ export class AuthController {
 
         res.status(200).json("Thank you for verifying your email! Your account is now activated.");
     }
+
+    static forgotPassword = async (req: Request, res: Response) => {
+        const { email } = req.body;
+
+        // Check if the user already exists
+        const user = await User.findOne({ where: { email } });
+
+        if(!user) {
+            const error = new Error("We couldn’t find an account associated with the email address you entered. Please check and try again.");
+            res.status(404).json({ error: error.message });
+            return;
+        }
+
+        user.token = generateToken();
+        await user.save();
+        await AuthEmail.sendForgotPasswordEmail({
+            email: user.email,
+            userName: user.userName,
+            token: user.token
+        });
+
+        res.status(200).json("Great! We’ve sent you a password reset email. Check your inbox and follow the steps to reset your password.")
+    }
 }

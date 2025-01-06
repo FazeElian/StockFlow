@@ -38,4 +38,12 @@ router.post("/confirm-account",
     AuthController.confirmAccount
 );
 
+router.post("/forgot-password",
+    body("email")
+        .isEmail().withMessage("Please enter a valid email address.")
+        .notEmpty().withMessage("Email is required"),
+    handleInputErrors,
+    AuthController.forgotPassword
+);
+
 export default router;
