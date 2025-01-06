@@ -21,4 +21,13 @@ router.post("/register",
 
 router.post("/login")
 
+router.post("/confirm-account",
+    body("token")
+        .notEmpty()
+        .isLength({ min: 6, max: 6  })
+        .withMessage("Token not valid"),
+    handleInputErrors,
+    AuthController.confirmAccount
+);
+
 export default router;

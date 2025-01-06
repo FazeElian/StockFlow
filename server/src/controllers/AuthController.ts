@@ -38,4 +38,21 @@ export class AuthController {
     static login = async (req: Request, res: Response) => {
 
     }
+
+    static confirmAccount = async (req: Request, res: Response) => {
+        const { token } = req.body;
+
+        const user = await User.findOne({ where: { token } })
+        if (!user) {
+            const error = new Error("Token not valid");
+            res.status(409).json({ error: error.message });
+            return;
+        }
+
+        user.confirmed = true;
+        user.token = null;
+        await user.save();
+
+        res.status(200).json("Thank you for verifying your email! Your account is now activated.");
+    }
 }
