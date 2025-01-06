@@ -4,7 +4,6 @@ import { checkPassword, hashPassword } from '../utils/auth';
 import { generateToken } from '../utils/token';
 import { AuthEmail } from '../emails/AuthEmail';
 import { generateJWT } from '../utils/jwt';
-import jwt from "jsonwebtoken";
 export class AuthController {
     static register = async (req: Request, res: Response) => {
         const { email, password } = req.body;
@@ -144,33 +143,6 @@ export class AuthController {
     }
 
     static getUser = async (req: Request, res: Response) => {
-        const bearer = req.headers.authorization;
-
-        if(!bearer) {
-            const error = new Error("Not authorized");
-            res.status(401).json({ error: error.message });
-            return;
-        }
-
-        const [ , token] = bearer.split(" ");
-        if(!token) {
-            const error = new Error("Token not valid");
-            res.status(401).json({ error: error.message });
-            return;
-        }
-
-        try {
-            const decoded = jwt.verify(token, process.env.JWT_SECRET);
-            if(typeof decoded === "object" && decoded.id){
-                const user = await User.findByPk(decoded.id, {
-                    attributes: ["id", "userName", "email", "name", "lastName", "profilePhoto"]
-                });
-                res.json(user);
-            }
-        } catch (error) {
-            res.status(500).json({ error: "Token not valid" })
-        }
-
-        res.json(token);
+        res.json(req.user);
     }
 }
