@@ -1,0 +1,165 @@
+/* Fonts */
+/* Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/* Afacad */
+@import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #0B0B0D;
+}
+
+a {
+    text-decoration: none;
+}
+
+.content-page--company {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.content-page--company {
+    margin-top: 5rem;
+}
+
+.content-page--admin {
+    margin-left: 300px;
+    margin: 0 22rem 0;
+    height: auto;
+    padding-top: 2rem;
+}
+
+/* Font classes */
+.font-inter {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.font-afacad {
+    font-family: "Afacad", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+/* Background colors */
+    /* Transparent */
+    .bg-transparent {
+        background: transparent;
+    }
+
+    /* Black */
+    .bg-black {
+        background-color: #0B0B0D;
+    }
+
+    /* Black medium */
+    .bg-black-medium {
+        background-color: #0E0E10;
+    }
+        
+    /* Black light */
+    .bg-black-light {
+        background-color: #212026;
+    }
+
+    /* Gray */
+    .gray {
+        background-color: #89888C;
+    }
+    
+    /* Gray dark */
+    .bg-gray-dark {
+        background-color: #1D1C21;
+    }
+
+    /* White */
+    .bg-white {
+        background-color: #F2F2F2;
+    }
+
+    /* Blue */
+    .bg-blue {
+        background-color: #11213B;
+    }
+
+    /* Green */
+    .bg-green {
+        background-color: #194026;
+    }
+
+    /* Brown */
+    .bg-brown {
+        background-color: #403116;
+    }
+
+    /* Red */
+    .bg-red {
+        background-color: #3D2120;
+    }
+
+    /* Purple */
+    .bg-purple {
+        background-color:  #2F1E40;
+    }
+
+    /* Pink */
+    .bg-pink {
+        background-color: #401A33;
+    }
+
+/* Font colors */
+    /* Black */
+    .color-black {
+        color: #070709;
+    }
+        
+    /* White */
+    .color-white {
+        color: #F2F2F2;
+    }
+
+    /* Gray */
+    .color-gray {
+        color: #89888C;
+    }
+
+.content-page--admin {
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    margin: 0;
+    padding: 4rem 3rem 0;
+    padding-left: 23rem;
+}
+    
+/* Responsive 1440px */
+@media screen and (max-width: 1440px) {
+    .content-page--admin {
+        padding: 1.5rem 3rem 0;
+        padding-left: 21rem;
+    }
+}
+
+/* Responsive 1024px */
+@media screen and (max-width: 1024px) {
+    .content-page--admin {
+        padding: 1rem 3rem 0;
+        padding-left: auto;
+    }
+}
+
+/* Responsive 425px */
+@media screen and (max-width: 425px) {
+    .content-page--admin {
+        padding: 3.5rem 2.5rem 0;
+    }
+}

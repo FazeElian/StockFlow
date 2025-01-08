@@ -7,7 +7,9 @@ export default function Home() {
       {/* Header component */}
       <HeaderCompany />
 
-      <h1>Main view company</h1>
+      <main className="content-page--company">
+        <h1 className="color-white font-inter">Main view company</h1>
+      </main>
     </>
   );
 }
