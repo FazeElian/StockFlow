@@ -4,7 +4,8 @@ import Category from "../models/Category"
 export class CategoryController {
     static getAll = async (req: Request, res: Response) => {
         try {
-            const categories = await Category.findAll({});
+            const userId = req.user.id;
+            const categories = await Category.findAll({ where: { userId: userId } });
             res.json(categories)
         } catch (error) {
             res.status(500).json({ error: "Error getting the categories" })
