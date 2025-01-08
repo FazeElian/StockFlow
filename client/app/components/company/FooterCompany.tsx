@@ -23,7 +23,7 @@ const FooterCompany = () => {
                     </p>
                 </div>
                 <div className="item-footer-company quick-links-footer-company bg-transparent">
-                    <h2 className="color-white bg-transparent">Enlaces Rápidos</h2>
+                    <h2 className="color-white bg-transparent">Quick Links</h2>
                     <ul className="bg-transparent list-links-footer-company">
                         <Link href="#" className="bg-transparent color-gray">Home</Link>
                         <Link href="#" className="bg-transparent color-gray">Features</Link>
