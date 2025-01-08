@@ -5,6 +5,7 @@ import "@/public/css/views/IndexView.css"
 import { HeaderCompany } from "./components/company/HeaderCompany";
 import { TopBannerServices } from "./components/company/TopBannerServices";
 import { AppMainFeatures } from "./components/company/AppMainFeatures";
+import { ChooseYourPlan } from "./components/company/ChooseYourPlan";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <main className="content-page--company">
         <TopBannerServices />
         <AppMainFeatures />
+        <ChooseYourPlan />
       </main>
     </>
   );
