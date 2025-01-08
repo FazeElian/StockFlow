@@ -4,6 +4,7 @@ import "@/public/css/views/IndexView.css"
 // Company landing page components
 import { HeaderCompany } from "./components/company/HeaderCompany";
 import { TopBannerServices } from "./components/company/TopBannerServices";
+import { AppMainFeatures } from "./components/company/AppMainFeatures";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
 
       <main className="content-page--company">
         <TopBannerServices />
+        <AppMainFeatures />
       </main>
     </>
   );
