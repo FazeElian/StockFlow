@@ -12,8 +12,11 @@ export class CategoryController {
         }
     }
 
-    static getById = async (req: Request, res: Response) => {
-        res.json(req.category);
+    static getById = async (req: Request, res:  Response) => {
+        res.json({
+            category: req.category,
+            user: req.user
+        });
     }
 
     static create = async (req: Request, res: Response) => {

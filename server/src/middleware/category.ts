@@ -50,3 +50,12 @@ export const validateCategoryInput = async (req: Request, res: Response, next: N
     
     next()
 }
+
+export const hasAccess = async (req: Request, res: Response, next: NextFunction) => {
+    if(req.category.userId !== req.user.id) {
+        const error = new Error("Not valid action");
+        return res.status(401).json({ error: error.message });
+    }    
+
+    next();
+}

@@ -3,6 +3,7 @@ import { CategoryController } from "../controllers/CategoryController";
 import { handleInputErrors } from "../middleware/validation";
 import { authenticate } from "../middleware/auth";
 import {
+    hasAccess,
     validateCategoryId,
     validateCategoryInput,
     validateIfCategoryExists
@@ -12,6 +13,8 @@ const router = Router()
 
 router.param("categoryId", validateCategoryId);
 router.param("categoryId", validateIfCategoryExists);
+router.param("categoryId", authenticate);
+router.param("categoryId", hasAccess);
 
 // Get all categories
 router.get("/categories/",
