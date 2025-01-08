@@ -6,6 +6,7 @@ import { HeaderCompany } from "./components/company/HeaderCompany";
 import { TopBannerServices } from "./components/company/TopBannerServices";
 import { AppMainFeatures } from "./components/company/AppMainFeatures";
 import { ChooseYourPlan } from "./components/company/ChooseYourPlan";
+import { StartNowCallToAction } from "./components/company/StartNowCallToAction";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <TopBannerServices />
         <AppMainFeatures />
         <ChooseYourPlan />
+        <StartNowCallToAction />
       </main>
     </>
   );
