@@ -14,7 +14,7 @@ const TopBannerServices = () => {
             <div className="top-banner-services bg-tr bg-transparent">
                 <h1 className="color-white bg-transparent font-afacad">StockFlow</h1>
                 <h2 className="color-gray bg-transparent">
-                    Optimización de la gestión de inventario y ventas de tu negocio con facilidad.
+                    Optimize your business inventory and sales management easily.
                 </h2>
             </div>
             <div className="btm-banner-services bg-transparent">
@@ -41,7 +41,7 @@ const TopBannerServices = () => {
                 href="#"
                 className="btn-start-now-banner-services color-white"
             >
-                Empezar Ahora
+                Start Now
             </Link>
         </section>
     )
