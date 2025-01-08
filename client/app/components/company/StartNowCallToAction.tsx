@@ -13,7 +13,7 @@ const StartNowCallToAction = () => {
                 Automate your inventory, sales and customer management with our intuitive tools.
             </p>
             <Link
-                href=""
+                href="/auth/register"
                 className="bg-transparent btn-start-now-call-to-action color-white bg-black"
             >
                 Start Now

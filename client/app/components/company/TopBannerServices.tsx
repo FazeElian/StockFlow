@@ -38,7 +38,7 @@ const TopBannerServices = () => {
 
             {/* Button start now */}
             <Link
-                href="#"
+                href="/auth/register"
                 className="btn-start-now-banner-services color-white"
             >
                 Start Now
