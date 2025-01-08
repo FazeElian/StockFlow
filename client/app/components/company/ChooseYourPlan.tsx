@@ -25,14 +25,14 @@ const ChooseYourPlan = () => {
                         }}
                     >
                         <h2 className="color-white bg-transparent">{item.title}</h2>
-                        <div className="list-item-choose-plan bg-transparent">
+                        <ul className="list-item-choose-plan bg-transparent">
                             <li className="color-white bg-transparent">&#10003; Daily sales reports</li>
                             <li className="color-white bg-transparent">&#10003; Export reports in PDF format</li>
                             <li className="color-white bg-transparent">&#10003; Access to basic tutorial videos</li>
                             <li className="color-white bg-transparent">&#10003; Receive automatic alerts when product stock is running low</li>
                             <li className="color-white bg-transparent">&#10003; Enjoy unlimited product management to scale your business</li>
                             <li className="color-white bg-transparent">&#10003; Email notifications</li>
-                        </div>
+                        </ul>
                         <h3 className="color-white bg-transparent"><b className="bg-transparent">Duration: </b>{item.duration}</h3>
                         <h4 className="color-white bg-transparent"><b className="bg-transparent"> ${item.price}</b> / month</h4>
                         <button className="btn-get-started-choose-plan color-white font-inter bg-black-light">

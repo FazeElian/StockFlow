@@ -40,7 +40,7 @@ const FooterCompany = () => {
                 </div>
                 <div className="item-footer-company connect-with-us-footer-company bg-transparent">
                     <h2 className="color-white bg-transparent">Find Us On:</h2>
-                    <ul className="bg-transparent">
+                    <div className="bg-transparent">
                         <Link href="#" className="item-connect-with-us bg-transparent">
                             <FaInstagram />
                             <h2 className="color-white bg-transparent">stockflow</h2>
@@ -53,7 +53,7 @@ const FooterCompany = () => {
                             <RiTwitterXFill />
                             <h2 className="color-white bg-transparent">@stockflow</h2>
                         </Link>
-                    </ul>
+                    </div>
                 </div>
             </div>
 
