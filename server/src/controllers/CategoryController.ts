@@ -18,15 +18,17 @@ export class CategoryController {
     static create = async (req: Request, res: Response) => {
         try {
             const { name, description } = req.body;
+            const userId = req.user.id;
 
-            const existingCategory = await Category.findOne({ where: { name } });
+            const existingCategory = await Category.findOne({ where: { name, userId } });
             if (existingCategory) {
                 const error = new Error("The category already exists");
                 res.status(404).json({ error: error.message });
                 return;
             }
-
+            
             const category = new Category({ name, description });
+            category.userId = req.user.id;
             await category.save();
 
             res.status(201).send("Category created sucessfully");
