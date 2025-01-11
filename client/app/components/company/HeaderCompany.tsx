@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Link as LinkScroll } from  "react-scroll";
@@ -24,6 +24,22 @@ const HeaderCompany = () => {
     const toggleMenu = () => {
         setMenu(!menu);
     }
+
+    // Hook to disable menu when user scrolls a certain amount
+    useEffect(() => {
+        const handleScrollMenu = () => {
+            const scrollThreshold = 150; // Scroll Amount
+            if (window.scrollY > scrollThreshold && menu) {
+                setMenu(false);
+            }
+        };
+            
+        window.addEventListener('scroll', handleScrollMenu); // Adding Scroll Event
+        
+        return () => {
+            window.removeEventListener('scroll', handleScrollMenu);
+        };
+    }, [menu]);
 
     return (
         <>
