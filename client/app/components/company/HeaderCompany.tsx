@@ -71,8 +71,12 @@ const HeaderCompany = () => {
                             Pricing
                         </LinkScroll>
                         <LinkScroll
-                            to="#"
+                            to="contact-us"
                             className="item-nav-list--company bg-transparent"
+                            spy={true}
+                            offset={-50}
+                            smooth={true} 
+                            duration={500}
                         >
                             <MdWifiCalling3 />
                             Contact Us
