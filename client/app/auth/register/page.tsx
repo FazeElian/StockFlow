@@ -9,11 +9,18 @@ import "@/public/css/components/company/Forms.css";
 // Logo
 import Logo from "@/public/img/Logo.png";
 
+// Server Action
+import { register } from "@/actions/auth/register.action";
+
 const RegisterView = () => {
     return (
         <main className="content-page--company">
             <section className="sect-form-users">
-                <form action="" className="form-users bg-black-medium font-inter" method="POST">
+                <form
+                    action={register}
+                    className="form-users bg-black-medium font-inter"
+                    method="POST"
+                >
                     <div className="top-form-users bg-transparent">
                         <Image
                             src={Logo}
@@ -30,6 +37,7 @@ const RegisterView = () => {
                             <label htmlFor="userName" className="bg-transparent color-white">Username</label>
                             <input
                                 type="text"
+                                name="username"
                                 id=""
                                 className="color-black bg-white font-inter"
                                 placeholder="Enter a username"
@@ -39,6 +47,7 @@ const RegisterView = () => {
                             <label htmlFor="email" className="bg-transparent color-white">Email</label>
                             <input
                                 type="text"
+                                name="email"
                                 id=""
                                 className="color-black bg-white font-inter"
                                 placeholder="Enter your email address"
@@ -48,6 +57,7 @@ const RegisterView = () => {
                             <label htmlFor="password" className="bg-transparent color-white">Password</label>
                             <input
                                 type="password"
+                                name="password"
                                 id=""
                                 className="color-black bg-white font-inter"
                                 placeholder="Create a password (at least 8 characters)"
