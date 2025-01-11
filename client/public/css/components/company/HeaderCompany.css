@@ -172,7 +172,7 @@
     .nav-list--company {
         display: flex;
         position: absolute;
-        top: 4.75rem;
+        top: 4.5rem;
         width: 25%;
         min-width: 260px;
         height: -webkit-fill-available;
