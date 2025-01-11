@@ -13,7 +13,7 @@ import { RiTwitterXFill } from "react-icons/ri";
 
 const FooterCompany = () => {
     return (
-        <footer className="footer-company font-inter bg-black">
+        <footer className="footer-company font-inter bg-black-medium">
             <div className="items-footer-company bg-transparent">
                 <div className="item-footer-company about-footer-company bg-transparent">
                     <Image src={Logo} className="bg-transparent" alt="" />
@@ -40,20 +40,20 @@ const FooterCompany = () => {
                 </div>
                 <div className="item-footer-company connect-with-us-footer-company bg-transparent">
                     <h2 className="color-white bg-transparent">Find Us On:</h2>
-                    <div className="bg-transparent">
-                        <Link href="#" className="item-connect-with-us bg-transparent">
+                    <ul className="bg-transparent">
+                        <Link href="https://www.instagram.com/" className="item-connect-with-us bg-transparent">
                             <FaInstagram />
                             <h2 className="color-white bg-transparent">stockflow</h2>
                         </Link>
-                        <Link href="#" className="item-connect-with-us bg-transparent">
+                        <Link href="https://www.facebook.com/" className="item-connect-with-us bg-transparent">
                             <FaFacebookSquare />
                             <h2 className="color-white bg-transparent">StockFlow</h2>
                         </Link>
-                        <Link href="#" className="item-connect-with-us bg-transparent">
+                        <Link href="https://x.com/" className="item-connect-with-us bg-transparent">
                             <RiTwitterXFill />
                             <h2 className="color-white bg-transparent">@stockflow</h2>
                         </Link>
-                    </div>
+                    </ul>
                 </div>
             </div>
 
