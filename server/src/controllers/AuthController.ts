@@ -29,7 +29,7 @@ export class AuthController {
                 token: user.token
             })
 
-            res.status(201).send("Your account has been successfully created.");
+            res.status(201).json("Your account has been successfully created.");
         } catch (error) {
             res.status(500).json({ error: "Error creating the user" })
         }

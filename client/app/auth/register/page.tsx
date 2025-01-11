@@ -18,6 +18,7 @@ const RegisterView = () => {
             <section className="sect-form-users">
                 <form
                     action={register}
+                    noValidate
                     className="form-users bg-black-medium font-inter"
                 >
                     <div className="top-form-users bg-transparent">
@@ -36,7 +37,7 @@ const RegisterView = () => {
                             <label htmlFor="userName" className="bg-transparent color-white">Username</label>
                             <input
                                 type="text"
-                                name="username"
+                                name="userName"
                                 id=""
                                 className="color-black bg-white font-inter"
                                 placeholder="Enter a username"
