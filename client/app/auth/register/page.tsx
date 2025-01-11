@@ -19,7 +19,6 @@ const RegisterView = () => {
                 <form
                     action={register}
                     className="form-users bg-black-medium font-inter"
-                    method="POST"
                 >
                     <div className="top-form-users bg-transparent">
                         <Image
