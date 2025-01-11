@@ -7,6 +7,7 @@ import { TopBannerServices } from "./components/company/TopBannerServices";
 import { AppMainFeatures } from "./components/company/AppMainFeatures";
 import { ChooseYourPlan } from "./components/company/ChooseYourPlan";
 import { StartNowCallToAction } from "./components/company/StartNowCallToAction";
+import { ContactUs } from "./components/company/ContactUs";
 import { FooterCompany } from "./components/company/FooterCompany";
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
         <AppMainFeatures />
         <ChooseYourPlan />
         <StartNowCallToAction />
+        <ContactUs />
         <FooterCompany />
       </main>
     </>
