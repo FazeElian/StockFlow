@@ -1,5 +1,7 @@
 "use client"
 
+import { Element } from 'react-scroll';
+
 // Framer motion
 import { motion } from 'framer-motion';
 
@@ -8,7 +10,7 @@ import ItemsMainFeatures from '@/app/utils/ItemsAppMainFeatures';
 
 const AppMainFeatures = () => {
     return (
-        <section className="app-features bg-black-medium font-inter">
+        <Element className="app-features bg-black-medium font-inter" name="features">
             <h1 className="color-white bg-transparent">Essential features for your business</h1>
                 <div className="items-app-features bg-transparent">
                     {ItemsMainFeatures.map((item) => (
@@ -31,7 +33,7 @@ const AppMainFeatures = () => {
                         </div>
                     ))}
                 </div>
-        </section>
+        </Element>
     )
 }
 

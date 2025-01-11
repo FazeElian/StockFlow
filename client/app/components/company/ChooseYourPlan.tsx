@@ -1,5 +1,7 @@
 "use client";
 
+import { Element } from "react-scroll";
+
 // Styles
 import ItemsChooseYourPlan from "@/app/utils/ItemsChooseYourPlan";
 
@@ -11,7 +13,7 @@ import "@/public/css/components/company/ChooseYourPlan.css"
 
 const ChooseYourPlan = () => {
     return (
-        <section className="choose-plan font-inter">
+        <Element className="choose-plan font-inter" name="pricing">
             <h1 className="color-white bg-transparent">Choose your Plan</h1>
             <div className="group-choose-plan">
                 {/* Items */}
@@ -41,7 +43,7 @@ const ChooseYourPlan = () => {
                     </motion.div>
                 ))}
             </div>
-        </section>
+        </Element>
     )
 }
 

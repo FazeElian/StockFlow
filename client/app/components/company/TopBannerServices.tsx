@@ -7,10 +7,11 @@ import ItemsTopBannerServices from "@/app/utils/ItemsTopBannerServices";
 
 // Framer motion
 import { motion } from 'framer-motion';
+import { Element } from "react-scroll";
 
 const TopBannerServices = () => {
     return (
-        <section className="banner-services font-inter">
+        <Element className="banner-services font-inter" name="home">
             <div className="top-banner-services bg-tr bg-transparent">
                 <h1 className="color-white bg-transparent font-afacad">StockFlow</h1>
                 <h2 className="color-gray bg-transparent">
@@ -43,7 +44,7 @@ const TopBannerServices = () => {
             >
                 Start Now
             </Link>
-        </section>
+        </Element>
     )
 }
 

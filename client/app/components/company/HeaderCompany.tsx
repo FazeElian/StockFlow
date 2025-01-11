@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Link as LinkScroll } from  "react-scroll";
 
 // Styles for this component
 import "@/public/css/components/company/HeaderCompany.css";
@@ -36,34 +37,46 @@ const HeaderCompany = () => {
                 </nav>
                 <nav className={ `nav-list--company ${menu ? "active" : ""}` }>
                     <section className="sect-list-nav-list--company">
-                        <Link
-                            href="#"
+                        <LinkScroll
+                            to="home"
                             className="item-nav-list--company bg-transparent"
+                            spy={true} 
+                            smooth={true} 
+                            offset={-100} 
+                            duration={500}
                         >
                             <FaHome />
                             Home
-                        </Link>
-                        <Link
-                            href="#"
+                        </LinkScroll>
+                        <LinkScroll
+                            to="features"
                             className="item-nav-list--company bg-transparent"
+                            spy={true}
+                            offset={-80}
+                            smooth={true} 
+                            duration={500}
                         >
                             <FaGears />
                             Features
-                        </Link>
-                        <Link
-                            href="#"
+                        </LinkScroll>
+                        <LinkScroll
+                            to="pricing"
                             className="item-nav-list--company bg-transparent"
+                            spy={true}
+                            offset={-100}
+                            smooth={true} 
+                            duration={500}
                         >
                             <IoMdPricetags />
                             Pricing
-                        </Link>
-                        <Link
-                            href="#"
+                        </LinkScroll>
+                        <LinkScroll
+                            to="#"
                             className="item-nav-list--company bg-transparent"
                         >
                             <MdWifiCalling3 />
                             Contact Us
-                        </Link>
+                        </LinkScroll>
                     </section>
 
                     <section className="sect-user-nav-list--company">
