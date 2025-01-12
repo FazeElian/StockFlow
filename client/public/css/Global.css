@@ -131,15 +131,6 @@ a {
         color: #89888C;
     }
 
-.bg-content-center {
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    background-color: #0B0B0D;
-    align-items: center;
-    justify-content: center;
-}
-
 .content-page--admin {
     display: flex;
     width: 100%;
