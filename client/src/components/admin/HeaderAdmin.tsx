@@ -1,14 +1,31 @@
-import { useQuery } from "@tanstack/react-query";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
-// Function from API Call
+// Tanstack
+import { useQuery } from "@tanstack/react-query"
+
+// Function from API
 import { getUser } from "../../api/auth";
 
+// Redirection
+import { useNavigate } from "react-router-dom";
+
+// Components for this layout
+import { NavBar } from "./NavBar";
+import { SideBar } from "./SideBar";
+
+// Toaster component
+import { Toaster } from "sonner";
+
+// Type
+// import { User } from "../../types/auth";
+
 const HeaderAdmin = () => {
-    const { data, isLoading, isError } = useQuery({
+    const { data: user, isLoading, isError } = useQuery({
         queryFn: getUser,
-        queryKey: ["user"]
-    })
+        queryKey: ["user"],
+        retry: 1,
+        refetchOnWindowFocus: false,
+    });
 
     const navigate = useNavigate();
 
@@ -22,18 +39,18 @@ const HeaderAdmin = () => {
         navigate("/auth/login");
     }
 
-    if (data) {
+    if (user) {
         return (
             <>
-                <header>
-                    <h1>Header Admin</h1>
-                </header>
-        
+                <NavBar
+                    userName={user.userName}
+                    profilePhoto={user.profilePhoto}
+                />
+                <SideBar />
+                <Toaster position="bottom-right" richColors />
                 <Outlet />
             </>
         )
-    } else {
-        navigate("/auth/login");
     }
 }
 
