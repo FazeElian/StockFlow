@@ -17,3 +17,11 @@ export type LoginForm = Pick<User, "email"> & {
 
 export type ForgotPasswordForm = Pick<User, "email">;
 export type ConfirmAccountForm = Pick<User, "token">;
+
+export type ResetPasswordForm = Pick<User, "token"> & {
+    password: string
+}
+
+export type ValidateCodeForm = Pick<User, "token"> & {
+    password: string
+}

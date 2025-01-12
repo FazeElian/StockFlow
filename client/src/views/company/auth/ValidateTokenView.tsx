@@ -13,32 +13,30 @@ import Logo from "../../../assets/img/Logo.png";
 import { ErrorMessageValidation } from "../../../components/company/auth/ErrorMessageValidation";
 
 // Type
-import { ForgotPasswordForm } from "../../../types/auth";
+import { ValidateCodeForm } from "../../../types/auth";
 
 // API call
 import api from "../../../config/axios";
 
-const ForgotPasswordView = () => {
-    const { register, handleSubmit, reset, formState: { errors } } = useForm<ForgotPasswordForm> ({
+const ValidateCodeView = () => {
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<ValidateCodeForm>({
         defaultValues: {
-            email: "",
+            password: "",
         }
     })
 
     const navigate = useNavigate();
 
-    const handleForgotPassword = async (formData: ForgotPasswordForm) => {
+    const handleValidateCode = async (formData: ValidateCodeForm) => {
         try {
-            const { data } = await api.post("/auth/forgot-password", formData);
+            const { data } = await api.post("/auth/validate-token", formData);
             reset();
 
             // Sucess message
             toast.success(data)
 
-            // Redirection to validate code view
-            setTimeout(() => {
-                navigate("/auth/validate-code");
-            }, 3000)
+            // Redirection to set new password
+            navigate(`/auth/reset-password/${formData.token}`)
         } catch (error) {
             if (isAxiosError(error) && error.response) {
                 toast.error(error.response.data.error);
@@ -54,7 +52,7 @@ const ForgotPasswordView = () => {
                         action=""
                         className="form-users bg-black-medium font-inter"
                         method="post"
-                        onSubmit={handleSubmit(handleForgotPassword)}
+                        onSubmit={handleSubmit(handleValidateCode)}
                     >
                         <div className="top-form-users bg-transparent">
                             <img
@@ -64,28 +62,32 @@ const ForgotPasswordView = () => {
                                 loading="lazy"
                             />
                             <h2 className="color-gray bg-transparent">
-                                Request a code to your email to reset your password.
+                                Enter the code sent to your email to reset your password
                             </h2>
                         </div>
                         <div className="inputs-form-users bg-transparent">
                             <div className="group-form-users bg-transparent">
-                                <label htmlFor="email" className="bg-transparent color-white">Email Address</label>
+                                <label htmlFor="token" className="bg-transparent color-white">Reset Code</label>
                                 <input
-                                    type="email"
-                                    id=""
+                                    type="text"
+                                    id="token"
                                     className="color-black bg-white font-inter"
-                                    placeholder="Enter the email associated with your account"
-                                    {...register("email", {
-                                        required: "Email is required",
-                                        pattern: {
-                                            value: /\S+@\S+\.\S+/,
-                                            message: "Please enter a valid email address."
+                                    placeholder="Enter the code sent to your email"
+                                    {...register("token", {
+                                        required: "Token not valid",
+                                        minLength: {
+                                            value: 6,
+                                            message: "Token not valid"
+                                        },
+                                        maxLength: {
+                                            value: 6,
+                                            message: "Token not valid"
                                         }
                                     })}
                                 />
-                                {errors.email && 
+                                {errors.token && 
                                     <ErrorMessageValidation>
-                                        { errors.email?.message }
+                                        { errors.token?.message }
                                     </ErrorMessageValidation>
                                 }
                             </div>
@@ -100,10 +102,10 @@ const ForgotPasswordView = () => {
 
             <Toaster
                 richColors
-                position="top-center"
+                position="bottom-right"
             />
         </>
     )
 }
 
-export default ForgotPasswordView;
+export default ValidateCodeView;
