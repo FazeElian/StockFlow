@@ -1,7 +1,9 @@
+import { TitleView } from "../../components/admin/TitleView";
+
 const DashboardView = () => {
     return (
         <main className="content-page--admin font-inter">
-            <h1 className="color-white">Admin Dashboard</h1>
+            <TitleView name="Dashboard view" />
         </main>
     )
 }

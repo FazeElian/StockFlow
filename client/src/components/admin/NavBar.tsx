@@ -28,6 +28,7 @@ const NavBar = ({ userName, profilePhoto } : UserProps) => {
     const navigate = useNavigate();
 
     const logOut = () => {
+        setDropdownUser(false);
         localStorage.removeItem("AUTH_TOKEN");
         navigate("/auth/login/");
     }
@@ -62,11 +63,11 @@ const NavBar = ({ userName, profilePhoto } : UserProps) => {
                         <h2>{userName}</h2>
                     </div>
                     <nav className="nav-dropdown">
-                        <Link to="" className="item-nav-dropdown">
+                        <Link to="/admin/profile" className="item-nav-dropdown" onClick={() => setDropdownUser(false)}>
                             <LuUserRound />
                             Perfil
                         </Link>
-                        <Link to="" className="item-nav-dropdown">
+                        <Link to="" className="item-nav-dropdown" onClick={() => setDropdownUser(false)}>
                             <FiHelpCircle />
                             Ayuda
                         </Link>

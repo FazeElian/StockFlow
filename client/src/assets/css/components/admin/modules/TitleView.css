@@ -1,0 +1,23 @@
+.title-view {
+    display: flex;
+    width: 100%;
+    height: auto;
+    color: #F2F2F2;
+    margin-top: 3rem;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+/* Responsive 1440px */
+@media screen and (max-width: 1440px) {
+    .title-view {
+        margin-top: 5rem;
+    }
+}
+
+/* Responsive 425px */
+@media screen and (max-width: 425px) {
+    .title-view {
+        margin-top: 3rem;
+    }
+}
