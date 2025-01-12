@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 // Styles for this component
-import "../../../public/css/components/company/StartNowCallToAction.css";
+import "../../assets/css/components/company/StartNowCallToAction.css";
 
 const StartNowCallToAction = () => {
     return (

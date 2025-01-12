@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { Element } from "react-scroll"
 
 // Styles
-import "../../../public/css/components/company/ContactUs.css";
+import "../../assets/css/components/company/ContactUs.css";
 
 // React icons
 import { FaFacebookSquare, FaInstagram, FaWhatsapp } from "react-icons/fa"

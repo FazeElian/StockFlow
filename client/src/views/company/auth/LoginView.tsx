@@ -2,10 +2,10 @@ import { Link } from "react-router-dom"
 import { useForm } from "react-hook-form";
 
 // Styles
-import "../../../../public/css/components/company/auth/Forms.css";
+import "../../../assets/css/components/company/auth/Forms.css";
 
 // Logo
-import Logo from "../../../../public/img/Logo.png";
+import Logo from "../../../assets/img/Logo.png";
 
 // Error form validation component
 import { ErrorMessageValidation } from "../../../components/company/auth/ErrorMessageValidation";

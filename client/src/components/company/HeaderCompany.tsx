@@ -5,10 +5,10 @@ import { Link, Outlet } from "react-router-dom";
 import { Link as LinkScroll } from "react-scroll";
 
 // Styles
-import "../../../public/css/components/company/HeaderCompany.css";
+import "../../assets/css/components/company/HeaderCompany.css";
 
 // Logo
-import Logo from "../../../public/img/Logo.png";
+import Logo from "../../assets/img/Logo.png";
 
 // React icons
 import { FaHome } from "react-icons/fa";
