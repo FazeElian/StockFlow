@@ -1,6 +1,8 @@
 import express from 'express'
 import colors from "colors";
 import morgan from 'morgan'
+import cors from "cors";
+import { CORSConfig } from './config/cors';
 import { db } from './config/db'
 import { limiter } from './config/limiter';
 
@@ -19,8 +21,10 @@ async function connectDB () {
 }
 connectDB();
 
+
 const app = express()
 
+app.use(cors(CORSConfig))
 app.use(morgan('dev'))
 app.use(express.json())
 app.use(limiter)
