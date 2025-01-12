@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // Headers
 import { HeaderCompany } from "./components/company/HeaderCompany";
+import { HeaderAdmin } from "./components/admin/HeaderAdmin";
 
 // Company Views
 import HomeView from "./views/company/HomeView";
@@ -31,7 +32,7 @@ export default function Router() {
           <Route path="confirm-account" element={<ConfirmAccountView />} />
         </Route>
 
-        <Route path="admin/*">
+        <Route path="admin/*" element={<HeaderAdmin />}>
           <Route path="dashboard" element={<DashboardView />} />
         </Route>
       </Routes>

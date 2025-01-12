@@ -31,6 +31,10 @@ const LoginView = () => {
     const handleLogin = async (formData: LoginForm) => {
         try {
             const { data } = await api.post("/auth/login", formData);
+
+            // Save JWT on localStorage
+            localStorage.setItem("AUTH_TOKEN", data);
+
             reset();
 
             // Sucess message

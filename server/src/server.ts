@@ -30,7 +30,7 @@ app.use(express.json())
 app.use(limiter)
 
 // API
-app.use("/api/", categoryRouter);
+app.use("/api/admin/", categoryRouter);
 app.use("/api/auth/", authRouter);
 
 export default app
