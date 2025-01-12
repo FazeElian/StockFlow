@@ -1,0 +1,251 @@
+.top-search-bar {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+    .search {
+    display: flex;
+    width: 50%;
+    height: auto;
+    gap: 1.2rem;
+    }
+
+        .btn-filter {
+        display: flex;
+        width: auto;
+        height: auto;
+        padding: 10px;
+        background-color: #A9D9CB;
+        border: none;
+        border-radius: 7px;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        }
+
+        .btn-filter svg {
+        width: 24px;
+        height: 23px;
+        color: #0B0B0D !important;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #F2F2F2;
+            gap: 10px;
+        }
+
+        .search-bar svg {
+            width: 20px;
+            height: 20px;
+            color: #F2F2F2 !important;
+        }
+
+        .search-bar input {
+            display: flex;
+            width: 50%;
+            min-width: 360px;
+            height: 100%;
+            font-size: 16px;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: #89888C;
+            transition: 0.2s ease-in-out;
+        }
+
+        .search-bar input::-webkit-input-placeholder {
+            color: #89888C;
+        }
+
+        .search-bar input:focus {
+            color: #F2F2F2;
+        }
+
+
+.module-options {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+    .btn-module-options {
+        display: flex;
+        width: auto;
+        height: auto;
+        padding: 11px 2rem 11px;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        font-size: 15px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        transition: 0.2s ease-in-out;
+        text-decoration: none;
+    }
+
+    .btn-module-options h2 {
+        font-size: 15px;
+        font-weight: 400;
+    }
+
+    .btn-module-options svg {
+        width: 22px;
+        height: 22px;
+        margin-right: 3px;
+    }
+
+    .btn-module-options:hover {
+        opacity: 0.7;
+        transition: 0.2s ease-in;
+    }
+
+    .btn-export {
+        color: #F2F2F2 !important;
+        background-color: #212026;
+        border: 1px solid #F2F2F2;
+    }
+
+    .btn-new {
+        color: #0B0B0D !important;
+        background-color: #A9D9CB;
+        font-weight: 500;
+    }
+
+    .btn-new h2 {
+        font-weight: 500;
+    }
+
+/* Responsive 1440px */
+@media screen and (max-width: 1440px) {
+    .top-search-bar {
+        margin-top: 1rem;
+    }
+
+    .search {
+        gap: 1rem;
+    }
+
+    .btn-filter {
+        padding: 0 13px 0;
+        border-radius: 5px;
+    }
+
+    .btn-filter svg {
+        width: 21px;
+        height: 21px;
+    }
+
+    .search-bar {
+        border-bottom: 1px solid #F2F2F2;
+        gap: 10px;
+    }
+
+    .search-bar svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .search-bar input {
+        width: 35%;
+        min-width: 280px;
+        font-size: 15px;
+    }
+
+    .btn-module-options {
+        padding: 11px 2rem 11px;
+        font-size: 14px;
+        border-radius: 4px;
+        gap: 8px;
+    }
+
+    .btn-module-options h2 {
+        display: none;
+    }
+
+    .btn-module-options svg {
+        width: 19px;
+        height: 19px;
+        margin: 0;
+    }
+}
+
+/* Responsive 1280px */
+@media screen and (max-width: 1280px) {
+    .btn-export {
+        font-size: 0;
+        gap: 0;
+        padding: 10px 14px 10px;
+    }
+}
+
+/* Responsive 1024px */
+@media screen and (max-width: 1024px) {
+    .btn-filter svg {
+        width: 19px;
+        height: 19px;
+    }
+    
+    .search-bar input {
+        min-width: 250px;
+    }
+    
+    .btn-export {
+        font-size: 0;
+        gap: 0;
+        padding: 10px 14px 10px;
+    }
+}
+
+/* Responsive 768px */
+@media screen and (max-width: 768px) {
+    .btn-new {
+        font-size: 0;
+        gap: 0;
+        padding: 10px 14px 10px;
+    }
+}
+
+/* Responsive 600px */
+@media screen and (max-width: 600px) {
+    .top-search-bar {
+        flex-direction: column;
+        gap: 1.2rem;
+        margin-top: 1.5rem;
+    }
+
+    .search,
+    .module-options {
+        width: 100%;
+    }
+
+    .btn-filter {
+        padding: 10px;
+    }
+
+    .search-bar {
+        width: 100%;
+    }
+
+    .search-bar input {
+        min-width: 90%;
+    }
+
+    .module-options {
+        gap: 12px;
+    }
+
+    .btn-module-options {
+        width: 50%;
+        font-size: 14px;
+        gap: 8px;
+        padding: 10px 1.2rem 10px;
+    }
+}

@@ -1,0 +1,142 @@
+.table {
+    display: flex;
+    width: 100%;
+    min-width: 100%;
+    height: auto;
+    margin: 1.5rem 0 1rem;
+    padding: 1rem 2rem 2.5rem;
+    flex-direction: column;
+    background-color: #212026;
+    border-radius: 5px;
+}
+
+    .thead {
+        display: flex;
+        width: auto;
+        justify-content: space-between;
+        border-bottom: 1px solid #F2F2F2;
+    }
+
+        .tr {
+            display: flex;
+            width: auto;
+            height: auto;
+            padding: 1rem;
+            color: #F2F2F2;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 500;
+        }
+    .tbody {
+        display: flex;
+        width: auto;
+        justify-content: space-between;
+        border-bottom: 1px solid #F2F2F2;
+        overflow: auto;
+    }
+
+        .td {
+            display: flex;
+            width: auto;
+            height: auto;
+            padding: 1rem;
+            color: #F2F2F2;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        .td-none {
+            width: 100%;
+        }
+
+        .td-options {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-td {
+            display: flex;
+            width: auto;
+            height: auto;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+            .btn-td svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .btn-td:hover {
+                opacity: 0.7;
+                transition: 0.3s ease-in;
+            }
+
+            .btn-td-view {
+                color: #22F2A4 !important;
+            }
+            
+            .btn-td-edit {
+                color: #22B7F2 !important;
+            }
+
+            .btn-td-delete {
+                color: #F20544 !important;
+            }
+
+    .tbody:hover {
+        background-color: #0E0E10;
+    }
+  
+/* Responsive 1440px */
+@media screen and (max-width: 1440px) {
+    .table {
+        margin: 2rem 0 1rem;
+    }
+
+    .tr {
+        font-size: 15px;
+    }
+
+    .td {
+        font-size: 14px;
+    }
+
+    .td-options {
+        gap: 10px;
+    }
+
+    btn-td svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* Responsive 768px */
+@media screen and (max-width: 768px) {
+    .table {
+        padding: 0.5rem 1.5rem 2rem;
+    }
+}
+
+/* Responsive 600px */
+@media screen and (max-width: 600px) {
+    .table {
+        margin: 1.5rem 0 1rem;
+    }
+
+    .tr-no-category,
+    .tr-description-category {
+        display: none;
+    }
+    
+    .td-no-category,
+    .td-description-category {
+        display: none;
+    }
+}
