@@ -12,67 +12,89 @@ import { ErrorMessageValidation } from "../../../components/company/auth/ErrorMe
 // Type
 import { ForgotPasswordForm } from "../../../types/auth";
 
+// API call
+import api from "../../../config/axios";
+import { isAxiosError } from "axios";
+import { toast, Toaster } from "sonner";
+
 const ForgotPasswordView = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<ForgotPasswordForm> ({
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<ForgotPasswordForm> ({
         defaultValues: {
             email: "",
         }
     })
 
     const handleForgotPassword = async (formData: ForgotPasswordForm) => {
-        console.log(formData)
+        try {
+            const { data } = await api.post("/auth/forgot-password", formData);
+            reset();
+
+            // Sucess message
+            toast.success(data)
+        } catch (error) {
+            if (isAxiosError(error) && error.response) {
+                toast.error(error.response.data.error);
+            }
+        }
     }
 
     return (
-        <main className="content-page--company">
-            <section className="sect-form-users">
-                <form
-                    action=""
-                    className="form-users bg-black-medium font-inter"
-                    method="post"
-                    onSubmit={handleSubmit(handleForgotPassword)}
-                >
-                    <div className="top-form-users bg-transparent">
-                        <img
-                            src={Logo}
-                            className="bg-transparent"
-                            alt=""
-                            loading="lazy"
-                        />
-                        <h2 className="color-gray bg-transparent">
-                            Request a code to your email to reset your password.
-                        </h2>
-                    </div>
-                    <div className="inputs-form-users bg-transparent">
-                        <div className="group-form-users bg-transparent">
-                            <label htmlFor="email" className="bg-transparent color-white">Email Address</label>
-                            <input
-                                type="email"
-                                id=""
-                                className="color-black bg-white font-inter"
-                                placeholder="Enter the email associated with your account"
-                                {...register("email", {
-                                    required: "Email is required",
-                                    pattern: {
-                                        value: /\S+@\S+\.\S+/,
-                                        message: "Please enter a valid email address."
-                                    }
-                                })}
+        <>
+            <main className="content-page--company">
+                <section className="sect-form-users">
+                    <form
+                        action=""
+                        className="form-users bg-black-medium font-inter"
+                        method="post"
+                        onSubmit={handleSubmit(handleForgotPassword)}
+                    >
+                        <div className="top-form-users bg-transparent">
+                            <img
+                                src={Logo}
+                                className="bg-transparent"
+                                alt=""
+                                loading="lazy"
                             />
-                            {errors.email && 
-                                <ErrorMessageValidation>
-                                    { errors.email?.message }
-                                </ErrorMessageValidation>
-                            }
+                            <h2 className="color-gray bg-transparent">
+                                Request a code to your email to reset your password.
+                            </h2>
                         </div>
+                        <div className="inputs-form-users bg-transparent">
+                            <div className="group-form-users bg-transparent">
+                                <label htmlFor="email" className="bg-transparent color-white">Email Address</label>
+                                <input
+                                    type="email"
+                                    id=""
+                                    className="color-black bg-white font-inter"
+                                    placeholder="Enter the email associated with your account"
+                                    {...register("email", {
+                                        required: "Email is required",
+                                        pattern: {
+                                            value: /\S+@\S+\.\S+/,
+                                            message: "Please enter a valid email address."
+                                        }
+                                    })}
+                                />
+                                {errors.email && 
+                                    <ErrorMessageValidation>
+                                        { errors.email?.message }
+                                    </ErrorMessageValidation>
+                                }
+                            </div>
 
-                        <button className="btn-submit-form-users bg-black-medium color-gray font-inter" type="submit">
-                            Send Recovery code
-                        </button>
-                    </div>
-                </form>
-            </section>
-        </main>
+                            <button className="btn-submit-form-users bg-black-medium color-gray font-inter" type="submit">
+                                Send Recovery code
+                            </button>
+                        </div>
+                    </form>
+                </section>
+            </main>
+
+            <Toaster
+                richColors
+                position="bottom-right"
+            />
+        </>
     )
 }
 
