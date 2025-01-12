@@ -43,7 +43,7 @@ const NavBar = ({ userName, profilePhoto } : UserProps) => {
             <div className="cont-btns-user">
                 <button className="btn-user-nav-bar font-inter">
                     <IoMailUnreadOutline />
-                    <h2 className="font-inter">Mensajes</h2>
+                    <h2 className="font-inter">Messages</h2>
                 </button>
                 <button className="btn-user-nav-bar font-inter btn-profile-nav-bar" onClick={handleDropdownUser}>
                     <FaUserCircle />
@@ -65,15 +65,15 @@ const NavBar = ({ userName, profilePhoto } : UserProps) => {
                     <nav className="nav-dropdown">
                         <Link to="/admin/profile" className="item-nav-dropdown" onClick={() => setDropdownUser(false)}>
                             <LuUserRound />
-                            Perfil
+                            My Profile
                         </Link>
                         <Link to="" className="item-nav-dropdown" onClick={() => setDropdownUser(false)}>
                             <FiHelpCircle />
-                            Ayuda
+                            Help
                         </Link>
                         <button className="item-nav-dropdown font-inter" onClick={logOut}>
                             <MdLogout />
-                            Cerrar Sesión
+                            Logout
                         </button>
                     </nav>
                 </div>

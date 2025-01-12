@@ -29,7 +29,7 @@ const SideBar = () => {
                     `}
                 >
                     <MdOutlineDashboard />
-                    <h2>Panel Principal</h2>
+                    <h2>Dashboard</h2>
                 </Link>
                 <Link
                     to="/admin/products"
@@ -38,7 +38,7 @@ const SideBar = () => {
                     `}
                 >
                     <BiShoppingBag />
-                    <h2>Productos</h2>
+                    <h2>Products</h2>
                 </Link>
                 <Link
                     to="/admin/categories"
@@ -47,7 +47,7 @@ const SideBar = () => {
                     `}
                 >
                     <BiCategory />
-                    <h2>Categorías</h2>
+                    <h2>Categories</h2>
                 </Link>
                 <Link
                     to="/admin/invoices"
@@ -56,7 +56,7 @@ const SideBar = () => {
                     `}
                 >
                     <LiaFileInvoiceSolid />
-                    <h2>Facturas</h2>
+                    <h2>Invoices</h2>
                 </Link>
                 <Link
                     to="/admin/sales"
@@ -65,7 +65,7 @@ const SideBar = () => {
                     `}
                 >
                     <TbCashRegister />
-                    <h2>Ventas</h2>
+                    <h2>Sales</h2>
                 </Link>
                 <Link
                     to="/admin/customers"
@@ -74,7 +74,7 @@ const SideBar = () => {
                     `}
                 >
                     <IoPeopleOutline />
-                    <h2>Clientes</h2>
+                    <h2>Customers</h2>
                 </Link>
             </nav>
         </aside>
