@@ -1,14 +1,37 @@
+import { useForm } from "react-hook-form";
+
 // Styles
 import "../../../../public/css/components/company/auth/Forms.css";
 
 // Logo
 import Logo from "../../../../public/img/Logo.png";
 
+// Error form validation component
+import { ErrorMessageValidation } from "../../../components/company/auth/ErrorMessageValidation";
+
+// Type
+import { ForgotPasswordForm } from "../../../types/auth";
+
 const ForgotPasswordView = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm<ForgotPasswordForm> ({
+        defaultValues: {
+            email: "",
+        }
+    })
+
+    const handleForgotPassword = async (formData: ForgotPasswordForm) => {
+        console.log(formData)
+    }
+
     return (
         <main className="content-page--company">
             <section className="sect-form-users">
-                <form action="" className="form-users bg-black-medium font-inter" method="post">
+                <form
+                    action=""
+                    className="form-users bg-black-medium font-inter"
+                    method="post"
+                    onSubmit={handleSubmit(handleForgotPassword)}
+                >
                     <div className="top-form-users bg-transparent">
                         <img
                             src={Logo}
@@ -28,7 +51,19 @@ const ForgotPasswordView = () => {
                                 id=""
                                 className="color-black bg-white font-inter"
                                 placeholder="Enter the email associated with your account"
+                                {...register("email", {
+                                    required: "Email is required",
+                                    pattern: {
+                                        value: /\S+@\S+\.\S+/,
+                                        message: "Please enter a valid email address."
+                                    }
+                                })}
                             />
+                            {errors.email && 
+                                <ErrorMessageValidation>
+                                    { errors.email?.message }
+                                </ErrorMessageValidation>
+                            }
                         </div>
 
                         <button className="btn-submit-form-users bg-black-medium color-gray font-inter" type="submit">

@@ -1,0 +1,9 @@
+.message-error-validation {
+    display: flex;
+    width: 100%;
+    height: auto;
+    font-size: 15px;
+    color: rgb(231, 55, 55);
+    margin-top: 8px;
+    font-weight: 500;
+}

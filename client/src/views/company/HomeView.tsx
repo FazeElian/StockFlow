@@ -1,5 +1,5 @@
 // Styles for this view
-import "../../assets/css/views/company/HomeView.css";
+import "../../../public/css/views/company/HomeView.css";
 
 // Components for this view
 import { TopBannerServices } from "../../components/company/TopBannerServices";
