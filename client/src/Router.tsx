@@ -18,7 +18,11 @@ import ValidateCodeView from "./views/company/auth/ValidateTokenView.tsx";
 // Admin views
 import DashboardView from "./views/admin/DashboardView";
 import ProductsView from "./views/admin/products/ProductsView.tsx";
+
+// Categories
 import CategoriesView from "./views/admin/categories/CategoriesView.tsx";
+import NewCategoryView from "./views/admin/categories/NewCategoryView.tsx";
+
 import InvoicesView from "./views/admin/invoices/InvoicesView.tsx";
 import SalesView from "./views/admin/sales/SalesView.tsx";
 import CustomersView from "./views/admin/customers/CustomersView.tsx";
@@ -45,7 +49,11 @@ export default function Router() {
         <Route path="admin/*" element={<HeaderAdmin />}>
           <Route path="dashboard" element={<DashboardView />} />
           <Route path="products" element={<ProductsView />} />
+
+          {/* Categories */}
           <Route path="categories" element={<CategoriesView />} />
+          <Route path="categories/new" element={<NewCategoryView />} />
+
           <Route path="invoices" element={<InvoicesView />} />
           <Route path="sales" element={<SalesView />} />
           <Route path="customers" element={<CustomersView />} />
