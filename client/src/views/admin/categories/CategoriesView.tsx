@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 // Styles
 import "../../../assets/css/components/admin/modules/Tables.css";
@@ -12,7 +13,22 @@ import { TopSearchBar } from "../../../components/admin/TopSearchBar";
 import { TbEdit } from "react-icons/tb";
 import { MdDelete } from "react-icons/md";
 
+// Function from API Call
+import { getAllCategories } from "../../../api/category";
+
+// Type
+import { Category } from "../../../types/category";
+
 const CategoriesView = () => {
+    const { data: categories, isLoading } = useQuery({
+        queryFn: getAllCategories,
+        queryKey: ["categories"],
+        retry: 1,
+        refetchOnWindowFocus: false,
+    });
+
+    if (isLoading) return <h1>Loading....</h1>;
+
     return (
         <main className="content-page--admin font-inter">
             <TitleView name="Categories view" />
@@ -32,21 +48,35 @@ const CategoriesView = () => {
                 </thead>
                 
                 <tbody>
-                    <tr className="tbody tbody-categories">
-                        <td className="td td-no-category">1</td>
-                        <td className="td td-name-category">Category 1</td>
-                        <td className="td td-description-category color-gray">
-                            No description
-                        </td>
-                        <td className="td td-options td-options-category">
-                            <Link to="edit/:id" className="btn-td btn-td-edit">
-                                <TbEdit />
-                            </Link>
-                            <button className="btn-td btn-td-delete">
-                                <MdDelete />
-                            </button>
-                        </td>
-                    </tr>
+                    {categories && categories?.length > 0 ? (
+                        categories.map((category: Category, i: number) => (
+                            <tr className="tbody tbody-categories" key={category.id}>
+                                <td className="td td-no-category">{i + 1}</td>
+                                <td className="td td-name-category">{category.name}</td>
+                                {category.description ? (
+                                    <td className="td td-description-category">
+                                        {category.description}
+                                    </td>
+                                ) : (
+                                    <td className="td td-description-category color-gray">
+                                        No description
+                                    </td>
+                                )}
+                                <td className="td td-options td-options-category">
+                                    <Link to="edit/:id" className="btn-td btn-td-edit">
+                                        <TbEdit />
+                                    </Link>
+                                    <button className="btn-td btn-td-delete">
+                                        <MdDelete />
+                                    </button>
+                                </td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr className="tbody tbody-categories">
+                            <td className="td td-none">No Categories Found</td>
+                        </tr>
+                    )}
                 </tbody>
             </table>
         </main>
