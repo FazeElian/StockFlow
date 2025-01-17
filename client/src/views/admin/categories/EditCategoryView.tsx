@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import { getCategoryById, updateCategory } from "../../../api/category";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useParams, useNavigate } from "react-router-dom";
-import { Category, CategoryForm } from "../../../types/category";
+import { Category, EditCategoryForm } from "../../../types/category";
 import { isAxiosError } from "axios";
 import { toast } from "sonner";
 
@@ -34,7 +34,7 @@ const EditCategoryView = () => {
         setValue,
         handleSubmit,
         formState: { errors }
-    } = useForm<CategoryForm>({
+    } = useForm<EditCategoryForm>({
         defaultValues: {
             name: "",
             description: ""
@@ -58,7 +58,7 @@ const EditCategoryView = () => {
     });
 
     // Update function
-    const handleUpdateCategory = (data: CategoryForm) => {
+    const handleUpdateCategory = (data: EditCategoryForm) => {
         mutation.mutate(data);
     }
 

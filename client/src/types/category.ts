@@ -4,4 +4,5 @@ export type Category = {
     description: string
 }
 
-export type CategoryForm = Category;
+export type CategoryForm = Pick<Category, "name" | "description">;
+export type EditCategoryForm = Category
