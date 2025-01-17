@@ -5,6 +5,7 @@ import api from "../config/axios";
 
 // Type
 import { Category } from "../types/category";
+import { toast } from "sonner";
 
 export async function getAllCategories () {
     try {
@@ -32,6 +33,17 @@ export async function updateCategory (id: string, categoryData: Category) {
     try {
         const { data } = await api.put(`/admin/categories/${id}`, categoryData);
         return data;
+    } catch (error) {
+        if (isAxiosError(error) && error.response) {
+            throw new Error(error.response.data.error);
+        }
+    }
+}
+
+export async function deleteCategory(id: string) {
+    try {
+        const { data } = await api.delete(`/admin/categories/${id}`);
+        return toast.success(data);
     } catch (error) {
         if (isAxiosError(error) && error.response) {
             throw new Error(error.response.data.error);

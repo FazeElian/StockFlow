@@ -14,7 +14,7 @@ import { TbEdit } from "react-icons/tb";
 import { MdDelete } from "react-icons/md";
 
 // Function from API Call
-import { getAllCategories } from "../../../api/category";
+import { deleteCategory, getAllCategories } from "../../../api/category";
 
 // Type
 import { Category } from "../../../types/category";
@@ -25,7 +25,8 @@ const CategoriesView = () => {
         queryKey: ["categories"],
         retry: 1,
         refetchOnWindowFocus: false,
-        gcTime: 30 * 10000
+        gcTime: 30 * 10000,
+        refetchInterval: 2 * 1000,
     });
 
     if (isLoading) return <h1>Loading....</h1>;
@@ -67,7 +68,7 @@ const CategoriesView = () => {
                                     <Link to={`edit/${category.id}`} className="btn-td btn-td-edit">
                                         <TbEdit />
                                     </Link>
-                                    <button className="btn-td btn-td-delete">
+                                    <button onClick={() => deleteCategory(category.id)} className="btn-td btn-td-delete">
                                         <MdDelete />
                                     </button>
                                 </td>
