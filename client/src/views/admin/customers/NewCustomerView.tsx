@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { isAxiosError } from "axios";
+import { toast } from "sonner";
 
 // Components for this view
 import { BottomModuleForm } from "../../../components/admin/BottomModuleForm";
@@ -15,27 +17,34 @@ import { useForm } from "react-hook-form";
 // Type
 import { Customer } from "../../../types/customer";
 
-// API Function
-import { createCustomer } from "../../../api/customer";
+// API Call
+import api from "../../../config/axios";
 
 const NewCustomerView = () => {
-    const initialValues = {
-        name: "",
-        description: ""
-    }
-
     const { register, handleSubmit, formState: { errors } } = useForm<Customer> ({
-        defaultValues: initialValues
+        defaultValues: {
+            name: "",
+            description: ""
+        }
     });
 
     // Redirect
     const navigate = useNavigate();
 
     const handleNewCustomer = async (formData: Customer) => {
-        createCustomer(formData);
+        try {
+            const { data } = await api.post("/admin/customers/create", formData);
 
-        // Redirection to customers view
-        navigate("/admin/customers");
+            // Sucess message
+            toast.success(data)
+
+            // Redirection to customers view
+            navigate("/admin/customers");
+        } catch (error) {
+            if (isAxiosError(error) && error.response) {
+                toast.error(error.response.data.error);
+            }
+        }
     }
 
     return (
