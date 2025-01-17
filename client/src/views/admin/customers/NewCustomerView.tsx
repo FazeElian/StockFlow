@@ -1,4 +1,3 @@
-import { isAxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 
 // Components for this view
@@ -14,13 +13,10 @@ import { ErrorMessageValidation } from "../../../components/company/auth/ErrorMe
 import { useForm } from "react-hook-form";
 
 // Type
-import { CustomerForm } from "../../../types/customer";
+import { Customer } from "../../../types/customer";
 
-// Toast alert component
-import { toast } from "sonner";
-
-// API Axios config
-import api from "../../../config/axios";
+// API Function
+import { createCustomer } from "../../../api/customer";
 
 const NewCustomerView = () => {
     const initialValues = {
@@ -28,30 +24,18 @@ const NewCustomerView = () => {
         description: ""
     }
 
-    const { register, handleSubmit, reset, formState: { errors } } = useForm ({
+    const { register, handleSubmit, formState: { errors } } = useForm<Customer> ({
         defaultValues: initialValues
     });
 
     // Redirect
     const navigate = useNavigate();
 
-    const handleNewCustomer = async (formData: CustomerForm) => {
-        try {
-            const { data } = await api.post("/admin/customers/create", formData);
+    const handleNewCustomer = async (formData: Customer) => {
+        createCustomer(formData);
 
-            // Clear form
-            reset()
-
-            // Redirection to customers view
-            navigate("/admin/customers");
-
-            // Sucess toast
-            toast.success(data);
-        } catch (error) {
-            if (isAxiosError(error) && error.response) {
-                toast.error(error.response.data);
-            }
-        }
+        // Redirection to customers view
+        navigate("/admin/customers");
     }
 
     return (
