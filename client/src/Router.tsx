@@ -26,7 +26,11 @@ import EditCategoryView from "./views/admin/categories/EditCategoryView.tsx";
 
 import InvoicesView from "./views/admin/invoices/InvoicesView.tsx";
 import SalesView from "./views/admin/sales/SalesView.tsx";
+
+// Customers
 import CustomersView from "./views/admin/customers/CustomersView.tsx";
+import NewCustomerView from "./views/admin/customers/NewCustomerView.tsx";
+
 import ProfileView from "./views/admin/profile/ProfileView.tsx";
 
 export default function Router() {
@@ -58,7 +62,11 @@ export default function Router() {
 
           <Route path="invoices" element={<InvoicesView />} />
           <Route path="sales" element={<SalesView />} />
+
+          {/* Customers */}
           <Route path="customers" element={<CustomersView />} />
+          <Route path="customers/new" element={<NewCustomerView />} />
+
           <Route path="profile" element={<ProfileView />} />
         </Route>
       </Routes>

@@ -8,6 +8,7 @@ import { limiter } from './config/limiter';
 
 // Routers
 import categoryRouter from "./routes/categoryRouter";
+import customerRouter from "./routes/customerRouter";
 import authRouter from "./routes/authRouter";
 
 async function connectDB () {
@@ -30,7 +31,7 @@ app.use(express.json())
 app.use(limiter)
 
 // API
-app.use("/api/admin/", categoryRouter);
+app.use("/api/admin/", categoryRouter, customerRouter);
 app.use("/api/auth/", authRouter);
 
 export default app
