@@ -22,6 +22,7 @@ import ProductsView from "./views/admin/products/ProductsView.tsx";
 // Categories
 import CategoriesView from "./views/admin/categories/CategoriesView.tsx";
 import NewCategoryView from "./views/admin/categories/NewCategoryView.tsx";
+import EditCategoryView from "./views/admin/categories/EditCategoryView.tsx";
 
 import InvoicesView from "./views/admin/invoices/InvoicesView.tsx";
 import SalesView from "./views/admin/sales/SalesView.tsx";
@@ -53,6 +54,7 @@ export default function Router() {
           {/* Categories */}
           <Route path="categories" element={<CategoriesView />} />
           <Route path="categories/new" element={<NewCategoryView />} />
+          <Route path="categories/edit/:id" element={<EditCategoryView />} />
 
           <Route path="invoices" element={<InvoicesView />} />
           <Route path="sales" element={<SalesView />} />

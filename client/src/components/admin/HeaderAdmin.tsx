@@ -25,6 +25,7 @@ const HeaderAdmin = () => {
         queryKey: ["user"],
         retry: 1,
         refetchOnWindowFocus: false,
+        // staleTime: 30 * 10000,
     });
 
     const navigate = useNavigate();

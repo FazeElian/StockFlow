@@ -25,6 +25,7 @@ const CategoriesView = () => {
         queryKey: ["categories"],
         retry: 1,
         refetchOnWindowFocus: false,
+        gcTime: 30 * 10000
     });
 
     if (isLoading) return <h1>Loading....</h1>;
@@ -63,7 +64,7 @@ const CategoriesView = () => {
                                     </td>
                                 )}
                                 <td className="td td-options td-options-category">
-                                    <Link to="edit/:id" className="btn-td btn-td-edit">
+                                    <Link to={`edit/${category.id}`} className="btn-td btn-td-edit">
                                         <TbEdit />
                                     </Link>
                                     <button className="btn-td btn-td-delete">

@@ -1,7 +1,7 @@
 export type Category = {
-    id: number,
+    id: string,
     name: string,
     description: string
 }
 
-export type CategoryForm = Pick<Category, "name" | "description">
+export type CategoryForm = Category;
