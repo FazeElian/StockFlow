@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="client/src/assets/img/Logo.png" alt="StockFlow Logo" />
+    <h1>StockFlow</h1>
 </div>
 <h3 align="center">(Project in Progress)</h3>
 <br />
