@@ -19,11 +19,14 @@ export class CategoriesService {
   }
 
   findAll() {
-    return `This action returns all categories`;
+    // return `This action returns all categories`;
+    // return this.categoryRepository.findBy({ id: 2 })
+    return this.categoryRepository.find()
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} category`;
+    // return `This action returns a #${id} category`;
+    return this.categoryRepository.findOneBy({ id: id })
   }
 
   update(id: number, updateCategoryDto: UpdateCategoryDto) {
