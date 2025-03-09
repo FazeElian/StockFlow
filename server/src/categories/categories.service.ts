@@ -12,7 +12,10 @@ export class CategoriesService {
   ) {}
 
   create(createCategoryDto: CreateCategoryDto) {
-    return createCategoryDto;
+    // const category = new Category()
+    // category.name = createCategoryDto.name
+    // category.description = createCategoryDto.description
+    return this.categoryRepository.save(createCategoryDto);
   }
 
   findAll() {
